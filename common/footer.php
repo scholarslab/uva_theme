@@ -12,7 +12,7 @@
 
       <p><strong><a href="http://lib.virginia.edu">University&nbsp;of&nbsp;Virginia&nbsp;Library</a></strong><br />
         PO Box 400113, Charlottesville, VA 22904-4113<br />
-        ph: (434) 924-3021, fax: (434) 924-1431, <a href="mailto:library@virginia.edu">library@virginia.edu</a></p>
+        ph: (434) 924-3021, fax: (434) 924-1431, <a href="mailto:digital_collecting@virginia.edu">digital_collecting@virginia.edu</a></p>
     </div>
     <div class="col">
 
