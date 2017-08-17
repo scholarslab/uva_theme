@@ -1,7 +1,5 @@
 </div> </div><!-- /#main -->
 
-<?php echo common('aside'); ?>
-
         </div><!-- /#content -->
 
     </div> </div><!-- /.row /.container --> <div class="container
