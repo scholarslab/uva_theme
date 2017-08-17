@@ -49,7 +49,7 @@
             <li><?php echo link_to_home_page('Home'); ?></li>
             <li><a href="http://www.virginia.edu">U.Va. Home</a></li>
             <li><a href="http://lib.virginia.edu">U.Va. Library</a></li>
-            <li><a href="<?php echo uri('about'); ?>">About</a></li>
+            <li><a href="<?php echo url('about'); ?>">About</a></li>
           </ul>
         </nav>
         <div class="sixcol last"></div>
@@ -60,7 +60,7 @@
       <header id="top-banner" class="twelvecol" role="banner">
         <div class="container">
           <h1 class="ninecol" id="main-title">
-          <a href="<?php echo uri('/'); ?>">
+          <a href="<?php echo url('/'); ?>">
             <span class="donor-title"><?php echo option('site_title'); ?></span>
             <span class="library-title">
               <?php if($tagline = get_theme_option('Tagline Text')): ?>
