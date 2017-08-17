@@ -5,30 +5,34 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="<?php echo get_html_lang(); ?>"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title><?php echo settings('site_title'); echo isset($title) ? ' | ' . strip_formatting($title) : ''; ?>
+  <title><?php echo option('site_title'); echo isset($title) ? ' | ' . strip_formatting($title) : ''; ?>
   </title>
   <meta name="viewport" content="width=device-width">
-  <?php if ($description = settings('description')): ?>
+  <?php if ($description = option('description')): ?>
   <meta name="description" content="<?php echo $description; ?>">
   <?php endif; ?>
-  <meta name="author" content="<?php echo settings('author'); ?>">
-  <link rel="author" href="<?php echo src('humans.txt'); ?>">
+  <meta name="author" content="<?php echo option('author'); ?>">
   <link rel="shortcut icon" href="<?php echo src('favicon.ico', 'images'); ?>">
   <link rel="apple-touch-icon" href="<?php echo src('apple-touch-icon.png', 'images'); ?>">
-  <?php echo js('libs/modernizr-2.5.3.min', 'javascripts'); ?>
-  <?php echo auto_discovery_link_tags(); ?>
-  <?php echo plugin_header(); ?>
+  <link type="text/css" rel="stylesheet" href="http://yui.yahooapis.com/2.5.1/build/datatable/assets/skins/sam/datatable.css">
   <?php
-    queue_css('style');
-    display_css();
-?>
-  <!--[if lt IE 8]><?php echo css('ie'); ?><![endif]-->
+  queue_js_file(array('uva-theme-1.0-min','libs/modernizr-2.5.3.min'));
+  echo head_js();
+  ?>
+  <?php echo auto_discovery_link_tags(); ?>
+  <?php fire_plugin_hook('public_head', array('view'=>$this)); ?>
+
+  <?php
+  queue_css_file('style');
+  echo head_css();
+  ?>
+
 </head>
 <?php echo body_tag(array('id' => @$bodyid, 'class' => 'home blog logged-in admin-bar no-bg ' . @$bodyclass)); ?>
 
 <div id="wrap" role="document">
     <div id="jump-menu" class="visuallyhidden">
-      Jump to: 
+      Jump to:
       <ul>
         <li><a href="#content">Main content</a></li>
         <li><a href="#main-nav">Main navigation</a></li>
@@ -57,7 +61,7 @@
         <div class="container">
           <h1 class="ninecol" id="main-title">
           <a href="<?php echo uri('/'); ?>">
-            <span class="donor-title"><?php echo settings('site_title'); ?></span>
+            <span class="donor-title"><?php echo option('site_title'); ?></span>
             <span class="library-title">
               <?php if($tagline = get_theme_option('Tagline Text')): ?>
                 <?php echo $tagline; ?>
@@ -70,7 +74,6 @@
       </div>
     </header>
   </div></div><!-- /.row /.container -->
-
 <div class="container content-container">
   <div class="row content-row clearfix">
       <div id="content" class="row">
