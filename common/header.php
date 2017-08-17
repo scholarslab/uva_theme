@@ -6,24 +6,27 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="<?php echo get_html_lang(); ?>"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title><?php echo settings('site_title'); echo isset($title) ? ' | ' . strip_formatting($title) : ''; ?>
+  <title><?php echo option('site_title'); echo isset($title) ? ' | ' . strip_formatting($title) : ''; ?>
   </title>
   <meta name="viewport" content="width=device-width">
-  <?php if ($description = settings('description')): ?>
+  <?php if ($description = option('description')): ?>
   <meta name="description" content="<?php echo $description; ?>">
   <?php endif; ?>
-  <meta name="author" content="<?php echo settings('author'); ?>">
+  <meta name="author" content="<?php echo option('author'); ?>">
   <link rel="shortcut icon" href="<?php echo src('favicon.ico', 'images'); ?>">
   <link rel="apple-touch-icon" href="<?php echo src('apple-touch-icon.png', 'images'); ?>">
   <link type="text/css" rel="stylesheet" href="http://yui.yahooapis.com/2.5.1/build/datatable/assets/skins/sam/datatable.css">
-  <?php echo js('libs/modernizr-2.5.3.min', 'javascripts'); ?>
-
-  <?php echo auto_discovery_link_tags(); ?>
-  <?php echo plugin_header(); ?>
   <?php
-    queue_css('style');
-    display_css();
-?>
+  queue_js_file('libs/modernizr-2.5.3.min');
+  echo head_js();
+  ?>
+  <?php echo auto_discovery_link_tags(); ?>
+  <?php fire_plugin_hook('public_head', array('view'=>$this)); ?>
+
+  <?php
+  queue_css_file('style');
+  echo head_css();
+  ?>
 
 </head>
 <?php echo body_tag(array('id' => @$bodyid, 'class' => 'uvalib-t1 uvalib-hd1 yui-skin-sam ' . @$bodyclass)); ?>
@@ -48,6 +51,6 @@
   <div class="docWrap">
     <div id="mainContent">
 
-    <div class="hd"><h1><?php echo settings('site_title'); ?></h1></div>
+    <div class="hd"><h1><?php echo option('site_title'); ?></h1></div>
       <div class="bd">
 
