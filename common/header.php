@@ -1,8 +1,5 @@
 <!doctype html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="<?php echo get_html_lang(); ?>"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="<?php echo get_html_lang(); ?>"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="<?php echo get_html_lang(); ?>"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="<?php echo get_html_lang(); ?>"> <!--<![endif]-->
+<html lang="<?php echo get_html_lang(); ?>">
 <head>
   <meta charset="utf-8">
   <title><?php echo option('site_title'); echo isset($title) ? ' | ' . strip_formatting($title) : ''; ?>
@@ -14,17 +11,15 @@
   <meta name="author" content="<?php echo option('author'); ?>">
   <link rel="shortcut icon" href="<?php echo src('favicon.ico', 'images'); ?>">
   <link rel="apple-touch-icon" href="<?php echo src('apple-touch-icon.png', 'images'); ?>">
-  <link type="text/css" rel="stylesheet" href="http://yui.yahooapis.com/2.5.1/build/datatable/assets/skins/sam/datatable.css">
-  <?php
-  queue_js_file(array('uva-theme-1.0-min','libs/modernizr-2.5.3.min'));
-  echo head_js();
-  ?>
   <?php echo auto_discovery_link_tags(); ?>
+  <link type="text/css" rel="stylesheet" href="http://yui.yahooapis.com/2.5.1/build/datatable/assets/skins/sam/datatable.css">
   <?php fire_plugin_hook('public_head', array('view'=>$this)); ?>
-
-  <?php
+<?php
   queue_css_file('style');
   echo head_css();
+
+  queue_js_file(array('uva-theme-1.0-min','libs/modernizr-2.5.3.min'));
+  echo head_js();
   ?>
 
 </head>
