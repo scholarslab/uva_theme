@@ -8,17 +8,13 @@
   <?php if ($description = option('description')): ?>
   <meta name="description" content="<?php echo $description; ?>">
   <?php endif; ?>
-  <meta name="author" content="<?php echo option('author'); ?>">
-  <link rel="shortcut icon" href="<?php echo src('favicon.ico', 'images'); ?>">
-  <link rel="apple-touch-icon" href="<?php echo src('apple-touch-icon.png', 'images'); ?>">
+
   <?php echo auto_discovery_link_tags(); ?>
-  <link type="text/css" rel="stylesheet" href="http://yui.yahooapis.com/2.5.1/build/datatable/assets/skins/sam/datatable.css">
+
   <?php fire_plugin_hook('public_head', array('view'=>$this)); ?>
 <?php
   queue_css_file('style');
   echo head_css();
-
-  queue_js_file(array('uva-theme-1.0-min','libs/modernizr-2.5.3.min'));
   echo head_js();
   ?>
 
@@ -26,16 +22,6 @@
 <?php echo body_tag(array('id' => @$bodyid, 'class' => 'home blog logged-in admin-bar no-bg ' . @$bodyclass)); ?>
 
 <div id="wrap" role="document">
-    <div id="jump-menu" class="visuallyhidden">
-      Jump to:
-      <ul>
-        <li><a href="#content">Main content</a></li>
-        <li><a href="#main-nav">Main navigation</a></li>
-        <li><a href="#search">Search</a></li>
-        <li><a href="http://lib.virginia.edu/services/accessibility/">Accessibility Services</a></li>
-      </ul>
-    </div>
-
      <div class="container top-container">
       <div class="row top-row">
         <nav class="eightcol" id="top-nav">
@@ -44,7 +30,6 @@
             <li><?php echo link_to_home_page('Home'); ?></li>
             <li><a href="http://www.virginia.edu">U.Va. Home</a></li>
             <li><a href="http://lib.virginia.edu">U.Va. Library</a></li>
-            <li><a href="<?php echo url('about'); ?>">About</a></li>
           </ul>
         </nav>
         <div class="sixcol last"></div>
@@ -74,3 +59,4 @@
       <div id="content" class="row">
           <div id="main" class="ninecol" role="main">
             <div class="container">
+                <?php fire_plugin_hook('public_content_top', array('view'=>$this)); ?>
